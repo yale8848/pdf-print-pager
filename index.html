@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        body {
+            background-color: burlywood;
+        }
+        
+        .block {
+            height: 30px;
+            text-align: center;
+            background-color: black
+        }
+    </style>
+</head>
+
+<body>
+    <div class="block b1">b1</div>
+    <div class="block b1">b1</div>
+    <div class="block b1">b1</div>
+    <div class="block b1">b1</div>
+    <div class="block b1">b1</div>
+    <div class="block b1">b1</div>
+    <div class="block b1">b1</div>
+    <div class="block b1">b1</div>
+    <div class="block b1">b1</div>
+
+    <script type="text/javascript" src="pdf-print-pager.js"></script>
+    <script type="text/javascript">
+        pdfPager.init({
+            format: 'A4',
+            margin: "0cm",
+            header: {
+                height: "1cm",
+                contents: function(pageNum, numPages, currentHeader) {
+                    currentHeader.height = '1cm';
+
+                    if (pageNum == 1) {
+                        return "";
+                    }
+                    return "<h1>Header <span style='float:right'>" + pageNum + " / " + numPages + "</span></h1>";
+                }
+            },
+            footer: {
+                height: "1cm",
+                contents: function(pageNum, numPages, currentFooter) {
+                    currentFooter.height = '1cm';
+                    if (pageNum == numPages) {
+                        return "";
+                    }
+                    return "<h1>Footer <span style='float:right'>" + pageNum + " / " + numPages + "</span></h1>";
+                }
+            }
+
+        });
+    </script>
+
+</body>
+
+</html>
